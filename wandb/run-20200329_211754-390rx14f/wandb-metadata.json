@@ -1,0 +1,29 @@
+{
+    "root": "/home/ubuntu/capstone_final_pct_water",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/revgizmo/capstone_final_pct_water",
+        "commit": "20d57d5dc4f6559dcf235963f194a31eac20559f"
+    },
+    "email": null,
+    "startedAt": "2020-03-29T21:16:28.996932",
+    "host": "ip-172-31-24-16",
+    "username": "ubuntu",
+    "executable": "/home/ubuntu/anaconda3/envs/pytorch_p36/bin/python",
+    "os": "Linux-4.15.0-1060-aws-x86_64-with-debian-buster-sid",
+    "python": "3.6.10",
+    "gpu": "Tesla K80",
+    "gpu_count": 1,
+    "cpu_count": 4,
+    "cuda": "10.0.130",
+    "args": [
+        "-f",
+        "/run/user/1000/jupyter/kernel-de778ff7-e461-417c-943b-a2d32d5ee1ea.json"
+    ],
+    "state": "running",
+    "jobType": null,
+    "mode": "run",
+    "name": "pretty-thunder-26",
+    "project": "serengeti-water",
+    "heartbeatAt": "2020-03-30T06:31:25.928397"
+}

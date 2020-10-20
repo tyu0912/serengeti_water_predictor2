@@ -1,0 +1,6 @@
+{"train Loss": 0.7165026267369589, "train Accuracy": 0.3333333333333333, "train Precision": 0.0, "train Recall": 0.0, "train F1-Score": NaN, "_runtime": 1.5040535926818848, "_timestamp": 1585679311.371295, "_step": 0}
+{"val Loss": 0.7524152398109436, "val Accuracy": 0.5, "val Precision": 0.5, "val Recall": 1.0, "val F1-Score": 0.6666666666666666, "_runtime": 2.190629005432129, "_timestamp": 1585679312.0578704, "_step": 1}
+{"train Loss": 0.696933388710022, "train Accuracy": 0.5, "train Precision": 0.5, "train Recall": 0.3333333333333333, "train F1-Score": 0.4, "_runtime": 2.698432683944702, "_timestamp": 1585679312.565674, "_step": 2}
+{"val Loss": 0.7358016967773438, "val Accuracy": 0.16666666666666666, "val Precision": 0.25, "val Recall": 0.3333333333333333, "val F1-Score": 0.28571428571428575, "_runtime": 3.3723087310791016, "_timestamp": 1585679313.23955, "_step": 3}
+{"train Loss": 0.7037309408187866, "train Accuracy": 0.5, "train Precision": 0.5, "train Recall": 0.3333333333333333, "train F1-Score": 0.4, "_runtime": 3.8141021728515625, "_timestamp": 1585679313.6813436, "_step": 4}
+{"val Loss": 0.7169252435366312, "val Accuracy": 0.3333333333333333, "val Precision": 0.4, "val Recall": 0.6666666666666666, "val F1-Score": 0.5, "_runtime": 4.483363628387451, "_timestamp": 1585679314.350605, "_step": 5}

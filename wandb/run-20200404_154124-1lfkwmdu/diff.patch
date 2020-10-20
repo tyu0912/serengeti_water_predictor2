@@ -1,0 +1,212 @@
+diff --git a/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb b/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb
+index cc1dc81..1374242 100644
+--- a/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb
++++ b/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb
+@@ -2,7 +2,7 @@
+  "cells": [
+   {
+    "cell_type": "code",
+-   "execution_count": 9,
++   "execution_count": 6,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -41,7 +41,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 10,
++   "execution_count": 2,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -430,7 +430,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 16,
++   "execution_count": 3,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -445,8 +445,9 @@
+     "        transforms.RandomHorizontalFlip(),\n",
+     "        transforms.ToTensor(),\n",
+     "# Serengeti normalization\n",
+-    "        transforms.Normalize([0.3427, 0.4095, 0.3815, 0.5000], [0.2544, 0.3212, 0.2478, 0.2292])\n",
+-    "#         transforms.Normalize([0.3425, 0.3499, 0.3686, 0.3445], [0.2469, 0.2501, 0.2590, 0.2374])\n",
++    "        transforms.Normalize([0.3741, 0.4309, 0.4041, 0.4997], [0.2645, 0.3126, 0.2533, 0.2287])\n",
++    "# Production normalization\n",
++    "#         transforms.Normalize([0.4818, 0.4898, 0.4858, 0.5001], [0.2259, 0.2370, 0.2261, 0.2043])\n",
+     "# Amazon normalization\n",
+     "#         transforms.Normalize([0.4979, 0.5001, 0.5023, 0.4999], [0.2255, 0.2253, 0.2251, 0.2166])\n",
+     "    ]),\n",
+@@ -455,8 +456,9 @@
+     "        transforms.CenterCrop(224),\n",
+     "        transforms.ToTensor(),\n",
+     "# Serengeti normalization\n",
+-    "        transforms.Normalize([0.3427, 0.4095, 0.3815, 0.5000], [0.2544, 0.3212, 0.2478, 0.2292])\n",
+-    "#         transforms.Normalize([0.3425, 0.3499, 0.3686, 0.3445], [0.2469, 0.2501, 0.2590, 0.2374])\n",
++    "        transforms.Normalize([0.3741, 0.4309, 0.4041, 0.4997], [0.2645, 0.3126, 0.2533, 0.2287])\n",
++    "# Production normalization\n",
++    "#         transforms.Normalize([0.4818, 0.4898, 0.4858, 0.5001], [0.2259, 0.2370, 0.2261, 0.2043])\n",
+     "# Amazon nomalization\n",
+     "#         transforms.Normalize([0.4979, 0.5001, 0.5023, 0.4999], [0.2255, 0.2253, 0.2251, 0.2166])\n",
+     "\n",
+@@ -464,8 +466,8 @@
+     "}\n",
+     "\n",
+     "\n",
+-    "data_dir = '~/data/serengeti'\n",
+-    "# data_dir = '~/capstone_final_pct_water/notebooks/data/amazon_tiff_data'\n",
++    "# data_dir = '~/data/prod'\n",
++    "# data_dir = '~/capstone_final_pct_water/notebooks/data/serengeti'\n",
+     "\n",
+     "image_datasets = {x: ImageFolder(os.path.join(data_dir, x), data_transforms[x]) for x in ['train', 'val']}\n",
+     "\n",
+@@ -480,9 +482,32 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 12,
++   "execution_count": 4,
+    "metadata": {},
+-   "outputs": [],
++   "outputs": [
++    {
++     "name": "stderr",
++     "output_type": "stream",
++     "text": [
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n",
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n",
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n",
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n",
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n",
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n",
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n",
++      "/home/ubuntu/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/rasterio/__init__.py:216: NotGeoreferencedWarning: Dataset has no geotransform set. The identity matrix may be returned.\n",
++      "  s = DatasetReader(path, driver=driver, sharing=sharing, **kwargs)\n"
++     ]
++    }
++   ],
+    "source": [
+     "mean = 0.0\n",
+     "for images, _ in dataloaders['train']:\n",
+@@ -501,15 +526,15 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 13,
++   "execution_count": 5,
+    "metadata": {},
+    "outputs": [
+     {
+      "name": "stdout",
+      "output_type": "stream",
+      "text": [
+-      "tensor([0.3427, 0.4095, 0.3815, 0.5000])\n",
+-      "tensor([0.2544, 0.3212, 0.2478, 0.2292])\n"
++      "tensor([0.4818, 0.4898, 0.4858, 0.5001])\n",
++      "tensor([0.2259, 0.2370, 0.2261, 0.2043])\n"
+      ]
+     }
+    ],
+@@ -520,12 +545,12 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 17,
++   "execution_count": 38,
+    "metadata": {},
+    "outputs": [
+     {
+      "data": {
+-      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAXoAAACDCAYAAACDStD1AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4zLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvnQurowAACyFJREFUeJzt3X+MpdVdx/H3R1ZAFxG2bAldSBd0EUtTLG4UpIkbaSMljaClCdi00GDWWIxVmxiQIGjShBprK0lDSmoLNIa2/KhFJJJmhWiNIItFfpRfS0thCpbF4soPa0v9+sdzhl6WWefOzp29s2fer+Tm3uc8Z86ce3Lms88+99znSVUhSerXD027A5KkpWXQS1LnDHpJ6pxBL0mdM+glqXMGvSR1zqDXHpekkryQ5EPT7sveLsnRSZ5P8v0kvzHt/mh5Mug1LcdV1YUASdYneWx2R5I1Sb7Q/jH4RpJfH9l3TpIrx/kFSS5JcsnI9slJHkzyYpJbk7x+ZN9tSTaN2e5jSda310ny4ST/0R5/miRzva952tyU5LaR7fWtjy+2Pr91rvdVVQ9X1QHAP47ze7QyGfRajj4OfBc4FHg3cHmSYxfTYJJDgBuAi4A1wFbgc4vsJ8Bm4HTgOOBNwDuA35xAu9cAXwFeA1wIXJdk7QTa1Qpk0GtZSbIaeCdwUVU9X1VfBm4E3rPIpn8NuL+qrq2q7wCXAMclOWaR7Z4NfKSqZqrqm8BHgHMW02CSo4HjgYur6r+r6nrgXoZxkRZs1bQ7IFXVY8D6tnk08P2qenikyr8Bv9jqXglcOWa7l4xsHtvamd33QpJHW/mDVbVpAf1dP7L5inbb62Nbvcf4wfuar83bgNk+HAt8raqe20W7l4zbVwk8otfycwCwY6eyHcCP7SXt7gAOmD1PP6E2Z9tdbF+1Qhn0Wm6eBw7cqexA4Lk56i7Hdg8Enq/FXS1wqfqqFcqg13LzMLAqyYaRsuOA+xfZ7v2tHeDlzwJ+YtLtMrm+HpVk9Ah+Eu1qhTLotaxU1QsMq2P+JMnqJCcBpwGfmat+W+p4zhhNfwF4Y5J3Jtkf+CPgnqp6cI42NyUZ94j8auD3k6xL8jrgg+ziM4QkV46zNLR9PnE3cHGS/ZP8KsOKnuvH7JP0Cga9lqP3Az8CPM2wzPC3qupVR7NJ9mVYfnj7fA1W1XaGVSsfAp4Ffh44cxfVjwD+ecy+fgL4G4ZVMfcBf9vKdtXuP43Z7pnAxtbXS4Ez2nuQFizeeER7WpLvAP8DXFZVFy2inbcA51XVWRPr3NDuJ4Frq+qWCba5L8PKmTdV1fcm2O4G4E5gX+D9bVWS9AoGvSR1bklO3SQ5JclDSbYlOX8pfockaTwTP6JPsg/Dyom3ATMM/608q6q+OtFfJEkay1Ic0f8csK2qvlZV3wU+y7BqQpI0BUsR9OuAJ0a2Z1qZJGkKluJaN3N99ftV54eSbGa48h+rV6/+2WOOWey1pSRpZbnrrrueqap5r2q6FEE/w7BeeNbhwJM7V6qqK4ArADZu3Fhbt25dgq5IUr+SfGOcektx6uZOYEOSI9va4TMZLjMrSZqCiR/RV9VLSX4buAXYB/jUXN9qlCTtGUtyPfqquhm4eSnaliQtjNe6kaTOGfSS1DmDXpI6Z9BLUucMeknqnEEvSZ0z6CWpcwa9JHXOoJekzhn0ktQ5g16SOmfQS1LnDHpJ6pxBL0mdM+glqXMGvSR1zqCXpM4Z9JLUOYNekjpn0EtS5wx6SeqcQS9JnTPoJalzBr0kdc6gl6TOGfSS1DmDXpI6Z9BLUufmDfokn0rydJL7RsrWJPlSkkfa88GtPEkuS7ItyT1Jjl/KzkuS5jfOEf2VwCk7lZ0PbKmqDcCWtg3wdmBDe2wGLp9MNyVJu2veoK+qfwC+vVPxacBV7fVVwOkj5VfX4HbgoCSHTaqzkqSF291z9IdW1VMA7fm1rXwd8MRIvZlWJkmakkl/GJs5ymrOisnmJFuTbN2+ffuEuyFJmrW7Qf+t2VMy7fnpVj4DHDFS73DgybkaqKorqmpjVW1cu3btbnZDkjSf3Q36G4Gz2+uzgS+OlL+3rb45Adgxe4pHkjQdq+arkOQaYBNwSJIZ4GLgUuDzSc4FHgfe1arfDJwKbANeBN63BH2WJC3AvEFfVWftYtfJc9Qt4LzFdkqSNDl+M1aSOmfQS1LnDHpJ6pxBL0mdM+glqXMGvSR1zqCXpM4Z9JLUOYNekjpn0EtS5wx6SeqcQS9JnTPoJalzBr0kdc6gl6TOGfSS1DmDXpI6Z9BLUucMeknqnEEvSZ0z6CWpcwa9JHXOoJekzhn0ktQ5g16SOmfQS1LnDHpJ6pxBL0mdmzfokxyR5NYkDyS5P8kHWvmaJF9K8kh7PriVJ8llSbYluSfJ8Uv9JiRJuzbOEf1LwAer6qeBE4DzkrwBOB/YUlUbgC1tG+DtwIb22AxcPvFeS5LGNm/QV9VTVfWv7fVzwAPAOuA04KpW7Srg9Pb6NODqGtwOHJTksIn3XJI0lgWdo0+yHngzcAdwaFU9BcM/BsBrW7V1wBMjPzbTyiRJUzB20Cc5ALge+N2q+q//r+ocZTVHe5uTbE2ydfv27eN2Q5K0QGMFfZIfZgj5v6qqG1rxt2ZPybTnp1v5DHDEyI8fDjy5c5tVdUVVbayqjWvXrt3d/kuS5jHOqpsAfwk8UFV/PrLrRuDs9vps4Isj5e9tq29OAHbMnuKRJO15q8aocxLwHuDeJHe3sj8ELgU+n+Rc4HHgXW3fzcCpwDbgReB9E+2xJGlB5g36qvoyc593Bzh5jvoFnLfIfkmSJsRvxkpS5wx6SeqcQS9JnTPoJalzBr0kdS7DIpkpdyJ5Dnho2v3YCxwCPDPtTuwFHKfxOE7jWc7j9Pqqmvcbp+Oso98THqqqjdPuxHKXZKvjND/HaTyO03h6GCdP3UhS5wx6Serccgn6K6bdgb2E4zQex2k8jtN49vpxWhYfxkqSls5yOaKXJC2RqQd9klOSPNRuJn7+/D/RJ2/CvjBJ9knylSQ3te0jk9zRxulzSfZt5fu17W1t//pp9ntPSnJQkuuSPNjm1YnOp1dL8nvtb+6+JNck2b+3+TTVoE+yD/BxhhuKvwE4q914fCXyJuwL8wGG+xfP+jDw0TZOzwLntvJzgWer6ieBj7Z6K8VfAH9XVccAxzGMl/NpRJJ1wO8AG6vqjcA+wJn0Np+qamoP4ETglpHtC4ALptmn5fJguJHL2xi+SHZYKzuM4TsHAJ8Azhqp/3K93h8Mdy3bAvwScBPDZbSfAVa1/S/PK+AW4MT2elWrl2m/hz0wRgcCX9/5vTqfXjVOs/e4XtPmx03AL/c2n6Z96sYbic/Bm7DP62PAHwD/27ZfA/xnVb3UtkfH4uVxavt3tPq9OwrYDny6neL6ZJLVOJ9eoaq+CfwZw82TnmKYH3fR2XyadtCPdSPxlWTSN2HvTZJ3AE9X1V2jxXNUrTH29WwVcDxweVW9GXiBH5ymmcuKHKf2GcVpwJHA64DVDKexdrZXz6dpB/1YNxJfKZbiJuwdOgn4lSSPAZ9lOH3zMeCgJLOX9Bgdi5fHqe3/ceDbe7LDUzIDzFTVHW37Oobgdz690luBr1fV9qr6HnAD8At0Np+mHfR3AhvaJ9z7MnwIcuOU+zQV3oR9PFV1QVUdXlXrGebL31fVu4FbgTNatZ3HaXb8zmj1l/0R2GJV1b8DTyT5qVZ0MvBVnE87exw4IcmPtr/B2XHqaz5N+0MChhuJPww8Clw47f5McRzewvBfwHuAu9vjVIbzf1uAR9rzmlY/DCuWHgXuZVg1MPX3sYfHbBNwU3t9FPAvDDelvxbYr5Xv37a3tf1HTbvfe3B8fgbY2ubUXwMHO5/mHKc/Bh4E7gM+A+zX23zym7GS1Llpn7qRJC0xg16SOmfQS1LnDHpJ6pxBL0mdM+glqXMGvSR1zqCXpM79HwiR6mMdPTSjAAAAAElFTkSuQmCC\n",
++      "image/png": "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\n",
+       "text/plain": [
+        "<Figure size 432x288 with 1 Axes>"
+       ]
+@@ -565,13 +590,13 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 18,
++   "execution_count": 39,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def train_model(model, criterion, optimizer, scheduler, num_epochs=25):\n",
+     "    since = time.time()\n",
+-    "    wandb.init(project=\"serengeti-water-test\")\n",
++    "    wandb.init(project=\"serengeti-water\")\n",
+     "    wandb.watch(model)\n",
+     "\n",
+     "    best_model_wts = copy.deepcopy(model.state_dict())\n",
+@@ -659,7 +684,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 19,
++   "execution_count": 40,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -694,7 +719,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 20,
++   "execution_count": null,
+    "metadata": {
+     "scrolled": true
+    },
+@@ -704,8 +729,8 @@
+       "text/html": [
+        "\n",
+        "                Logging results to <a href=\"https://wandb.com\" target=\"_blank\">Weights & Biases</a> <a href=\"https://docs.wandb.com/integrations/jupyter.html\" target=\"_blank\">(Documentation)</a>.<br/>\n",
+-       "                Project page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water-test\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water-test</a><br/>\n",
+-       "                Run page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water-test/runs/g2j3qd6p\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water-test/runs/g2j3qd6p</a><br/>\n",
++       "                Project page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water</a><br/>\n",
++       "                Run page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water/runs/gzlwn0k9\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water/runs/gzlwn0k9</a><br/>\n",
+        "            "
+       ],
+       "text/plain": [
+@@ -719,20 +744,9 @@
+      "name": "stdout",
+      "output_type": "stream",
+      "text": [
+-      "Epoch 0/2\n",
++      "Epoch 0/24\n",
+       "----------\n",
+-      "train Loss: 0.2648 | Acc: 0.9270 | Prec: nan | Recall: 0.0000 | F1: nan\n",
+-      "val Loss: 0.2483 | Acc: 0.9271 | Prec: nan | Recall: 0.0000 | F1: nan\n",
+-      "Epoch 1/2\n",
+-      "----------\n",
+-      "train Loss: 0.2515 | Acc: 0.9270 | Prec: nan | Recall: 0.0000 | F1: nan\n",
+-      "val Loss: 0.2587 | Acc: 0.9252 | Prec: 0.0000 | Recall: 0.0000 | F1: nan\n",
+-      "Epoch 2/2\n",
+-      "----------\n",
+-      "train Loss: 0.2465 | Acc: 0.9268 | Prec: 0.4000 | Recall: 0.0059 | F1: 0.0116\n",
+-      "val Loss: 0.2315 | Acc: 0.9252 | Prec: 0.0000 | Recall: 0.0000 | F1: nan\n",
+-      "Training complete in 8m 44s\n",
+-      "Best val Acc: 0.927103\n"
++      "train Loss: 0.4188 | Acc: 0.8302 | Prec: 0.6566 | Recall: 0.3128 | F1: 0.4238\n"
+      ]
+     }
+    ],
+@@ -747,6 +761,8 @@
+     "\n",
+     "model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=3)\n",
+     "\n",
++    "model_ft.save_state_dict('models/mytraining_{}.pt'.format(datetime.now()))\n",
++    "\n",
+     "######################################################################\n",
+     "\n",
+     "#visualize_model(model_ft)\n",

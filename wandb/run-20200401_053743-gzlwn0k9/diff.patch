@@ -1,0 +1,260 @@
+diff --git a/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb b/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb
+index cc1dc81..4731bd9 100644
+--- a/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb
++++ b/notebooks/pytorch_transfer_learning-Serengeti-Final.ipynb
+@@ -2,7 +2,7 @@
+  "cells": [
+   {
+    "cell_type": "code",
+-   "execution_count": 9,
++   "execution_count": 32,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -41,7 +41,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 10,
++   "execution_count": 33,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -430,7 +430,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 16,
++   "execution_count": 34,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -445,7 +445,7 @@
+     "        transforms.RandomHorizontalFlip(),\n",
+     "        transforms.ToTensor(),\n",
+     "# Serengeti normalization\n",
+-    "        transforms.Normalize([0.3427, 0.4095, 0.3815, 0.5000], [0.2544, 0.3212, 0.2478, 0.2292])\n",
++    "#         transforms.Normalize([0.3741, 0.4309, 0.4041, 0.4997], [0.2541, 0.3210, 0.2472, 0.2293])\n",
+     "#         transforms.Normalize([0.3425, 0.3499, 0.3686, 0.3445], [0.2469, 0.2501, 0.2590, 0.2374])\n",
+     "# Amazon normalization\n",
+     "#         transforms.Normalize([0.4979, 0.5001, 0.5023, 0.4999], [0.2255, 0.2253, 0.2251, 0.2166])\n",
+@@ -455,7 +455,7 @@
+     "        transforms.CenterCrop(224),\n",
+     "        transforms.ToTensor(),\n",
+     "# Serengeti normalization\n",
+-    "        transforms.Normalize([0.3427, 0.4095, 0.3815, 0.5000], [0.2544, 0.3212, 0.2478, 0.2292])\n",
++    "#         transforms.Normalize([0.3741, 0.4309, 0.4041, 0.4997], [0.2541, 0.3210, 0.2472, 0.2293])\n",
+     "#         transforms.Normalize([0.3425, 0.3499, 0.3686, 0.3445], [0.2469, 0.2501, 0.2590, 0.2374])\n",
+     "# Amazon nomalization\n",
+     "#         transforms.Normalize([0.4979, 0.5001, 0.5023, 0.4999], [0.2255, 0.2253, 0.2251, 0.2166])\n",
+@@ -480,7 +480,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 12,
++   "execution_count": 35,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -501,15 +501,15 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 13,
++   "execution_count": 36,
+    "metadata": {},
+    "outputs": [
+     {
+      "name": "stdout",
+      "output_type": "stream",
+      "text": [
+-      "tensor([0.3427, 0.4095, 0.3815, 0.5000])\n",
+-      "tensor([0.2544, 0.3212, 0.2478, 0.2292])\n"
++      "tensor([0.3741, 0.4309, 0.4041, 0.4997])\n",
++      "tensor([0.2645, 0.3126, 0.2533, 0.2287])\n"
+      ]
+     }
+    ],
+@@ -520,7 +520,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 17,
++   "execution_count": 27,
+    "metadata": {},
+    "outputs": [
+     {
+@@ -565,13 +565,13 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 18,
++   "execution_count": 29,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+     "def train_model(model, criterion, optimizer, scheduler, num_epochs=25):\n",
+     "    since = time.time()\n",
+-    "    wandb.init(project=\"serengeti-water-test\")\n",
++    "    wandb.init(project=\"serengeti-water\")\n",
+     "    wandb.watch(model)\n",
+     "\n",
+     "    best_model_wts = copy.deepcopy(model.state_dict())\n",
+@@ -659,7 +659,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 19,
++   "execution_count": 30,
+    "metadata": {},
+    "outputs": [],
+    "source": [
+@@ -694,7 +694,7 @@
+   },
+   {
+    "cell_type": "code",
+-   "execution_count": 20,
++   "execution_count": 31,
+    "metadata": {
+     "scrolled": true
+    },
+@@ -704,8 +704,8 @@
+       "text/html": [
+        "\n",
+        "                Logging results to <a href=\"https://wandb.com\" target=\"_blank\">Weights & Biases</a> <a href=\"https://docs.wandb.com/integrations/jupyter.html\" target=\"_blank\">(Documentation)</a>.<br/>\n",
+-       "                Project page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water-test\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water-test</a><br/>\n",
+-       "                Run page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water-test/runs/g2j3qd6p\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water-test/runs/g2j3qd6p</a><br/>\n",
++       "                Project page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water</a><br/>\n",
++       "                Run page: <a href=\"https://app.wandb.ai/pcoggins/serengeti-water/runs/dblr6x4i\" target=\"_blank\">https://app.wandb.ai/pcoggins/serengeti-water/runs/dblr6x4i</a><br/>\n",
+        "            "
+       ],
+       "text/plain": [
+@@ -719,20 +719,108 @@
+      "name": "stdout",
+      "output_type": "stream",
+      "text": [
+-      "Epoch 0/2\n",
++      "Epoch 0/24\n",
++      "----------\n",
++      "train Loss: 0.2618 | Acc: 0.9265 | Prec: 0.0000 | Recall: 0.0000 | F1: nan\n",
++      "val Loss: 0.2566 | Acc: 0.9271 | Prec: nan | Recall: 0.0000 | F1: nan\n",
++      "Epoch 1/24\n",
++      "----------\n",
++      "train Loss: 0.2557 | Acc: 0.9270 | Prec: nan | Recall: 0.0000 | F1: nan\n",
++      "val Loss: 0.2588 | Acc: 0.9252 | Prec: 0.0000 | Recall: 0.0000 | F1: nan\n",
++      "Epoch 2/24\n",
++      "----------\n",
++      "train Loss: 0.2459 | Acc: 0.9274 | Prec: 1.0000 | Recall: 0.0059 | F1: 0.0117\n",
++      "val Loss: 0.2275 | Acc: 0.9271 | Prec: nan | Recall: 0.0000 | F1: nan\n",
++      "Epoch 3/24\n",
++      "----------\n",
++      "train Loss: 0.2388 | Acc: 0.9280 | Prec: 0.8571 | Recall: 0.0176 | F1: 0.0345\n",
++      "val Loss: 0.2632 | Acc: 0.9234 | Prec: 0.4375 | Recall: 0.1795 | F1: 0.2545\n",
++      "Epoch 4/24\n",
++      "----------\n",
++      "train Loss: 0.2286 | Acc: 0.9280 | Prec: 0.5926 | Recall: 0.0469 | F1: 0.0870\n",
++      "val Loss: 0.2177 | Acc: 0.9364 | Prec: 0.7778 | Recall: 0.1795 | F1: 0.2917\n",
++      "Epoch 5/24\n",
++      "----------\n",
++      "train Loss: 0.2335 | Acc: 0.9300 | Prec: 0.6842 | Recall: 0.0762 | F1: 0.1372\n",
++      "val Loss: 0.2183 | Acc: 0.9290 | Prec: 0.6667 | Recall: 0.0513 | F1: 0.0952\n",
++      "Epoch 6/24\n",
++      "----------\n",
++      "train Loss: 0.2279 | Acc: 0.9293 | Prec: 0.6078 | Recall: 0.0909 | F1: 0.1582\n",
++      "val Loss: 0.2282 | Acc: 0.9234 | Prec: 0.4615 | Recall: 0.3077 | F1: 0.3692\n",
++      "Epoch 7/24\n",
++      "----------\n",
++      "train Loss: 0.2208 | Acc: 0.9310 | Prec: 0.6939 | Recall: 0.0997 | F1: 0.1744\n",
++      "val Loss: 0.2162 | Acc: 0.9252 | Prec: 0.4783 | Recall: 0.2821 | F1: 0.3548\n",
++      "Epoch 8/24\n",
++      "----------\n",
++      "train Loss: 0.2180 | Acc: 0.9330 | Prec: 0.7333 | Recall: 0.1290 | F1: 0.2195\n",
++      "val Loss: 0.2082 | Acc: 0.9364 | Prec: 0.6923 | Recall: 0.2308 | F1: 0.3462\n",
++      "Epoch 9/24\n",
++      "----------\n",
++      "train Loss: 0.2147 | Acc: 0.9327 | Prec: 0.7872 | Recall: 0.1085 | F1: 0.1907\n",
++      "val Loss: 0.2097 | Acc: 0.9308 | Prec: 0.5556 | Recall: 0.2564 | F1: 0.3509\n",
++      "Epoch 10/24\n",
++      "----------\n",
++      "train Loss: 0.2188 | Acc: 0.9310 | Prec: 0.6792 | Recall: 0.1056 | F1: 0.1827\n",
++      "val Loss: 0.2151 | Acc: 0.9327 | Prec: 0.5600 | Recall: 0.3590 | F1: 0.4375\n",
++      "Epoch 11/24\n",
++      "----------\n",
++      "train Loss: 0.2147 | Acc: 0.9338 | Prec: 0.7667 | Recall: 0.1349 | F1: 0.2294\n",
++      "val Loss: 0.2208 | Acc: 0.9346 | Prec: 0.5833 | Recall: 0.3590 | F1: 0.4444\n",
++      "Epoch 12/24\n",
++      "----------\n",
++      "train Loss: 0.2182 | Acc: 0.9315 | Prec: 0.6909 | Recall: 0.1114 | F1: 0.1919\n",
++      "val Loss: 0.2142 | Acc: 0.9327 | Prec: 0.5600 | Recall: 0.3590 | F1: 0.4375\n",
++      "Epoch 13/24\n",
++      "----------\n",
++      "train Loss: 0.2073 | Acc: 0.9334 | Prec: 0.7344 | Recall: 0.1378 | F1: 0.2321\n",
++      "val Loss: 0.2001 | Acc: 0.9346 | Prec: 0.6250 | Recall: 0.2564 | F1: 0.3636\n",
++      "Epoch 14/24\n",
++      "----------\n",
++      "train Loss: 0.2194 | Acc: 0.9304 | Prec: 0.6250 | Recall: 0.1173 | F1: 0.1975\n",
++      "val Loss: 0.2052 | Acc: 0.9346 | Prec: 0.6429 | Recall: 0.2308 | F1: 0.3396\n",
++      "Epoch 15/24\n",
++      "----------\n",
++      "train Loss: 0.2123 | Acc: 0.9325 | Prec: 0.7167 | Recall: 0.1261 | F1: 0.2145\n",
++      "val Loss: 0.2151 | Acc: 0.9308 | Prec: 0.5385 | Recall: 0.3590 | F1: 0.4308\n",
++      "Epoch 16/24\n",
++      "----------\n",
++      "train Loss: 0.2097 | Acc: 0.9336 | Prec: 0.7183 | Recall: 0.1496 | F1: 0.2476\n",
++      "val Loss: 0.2056 | Acc: 0.9383 | Prec: 0.6500 | Recall: 0.3333 | F1: 0.4407\n",
++      "Epoch 17/24\n",
++      "----------\n",
++      "train Loss: 0.2100 | Acc: 0.9338 | Prec: 0.7162 | Recall: 0.1554 | F1: 0.2554\n",
++      "val Loss: 0.2051 | Acc: 0.9402 | Prec: 0.6842 | Recall: 0.3333 | F1: 0.4483\n",
++      "Epoch 18/24\n",
++      "----------\n",
++      "train Loss: 0.2129 | Acc: 0.9312 | Prec: 0.6316 | Recall: 0.1408 | F1: 0.2302\n",
++      "val Loss: 0.2068 | Acc: 0.9364 | Prec: 0.6190 | Recall: 0.3333 | F1: 0.4333\n",
++      "Epoch 19/24\n",
++      "----------\n",
++      "train Loss: 0.2149 | Acc: 0.9317 | Prec: 0.6447 | Recall: 0.1437 | F1: 0.2350\n",
++      "val Loss: 0.2059 | Acc: 0.9364 | Prec: 0.6471 | Recall: 0.2821 | F1: 0.3929\n",
++      "Epoch 20/24\n",
++      "----------\n",
++      "train Loss: 0.2143 | Acc: 0.9321 | Prec: 0.6875 | Recall: 0.1290 | F1: 0.2173\n",
++      "val Loss: 0.2098 | Acc: 0.9290 | Prec: 0.5217 | Recall: 0.3077 | F1: 0.3871\n",
++      "Epoch 21/24\n",
++      "----------\n",
++      "train Loss: 0.2108 | Acc: 0.9351 | Prec: 0.7568 | Recall: 0.1642 | F1: 0.2699\n",
++      "val Loss: 0.2014 | Acc: 0.9402 | Prec: 0.6842 | Recall: 0.3333 | F1: 0.4483\n",
++      "Epoch 22/24\n",
+       "----------\n",
+-      "train Loss: 0.2648 | Acc: 0.9270 | Prec: nan | Recall: 0.0000 | F1: nan\n",
+-      "val Loss: 0.2483 | Acc: 0.9271 | Prec: nan | Recall: 0.0000 | F1: nan\n",
+-      "Epoch 1/2\n",
++      "train Loss: 0.2149 | Acc: 0.9317 | Prec: 0.6447 | Recall: 0.1437 | F1: 0.2350\n",
++      "val Loss: 0.2139 | Acc: 0.9364 | Prec: 0.6000 | Recall: 0.3846 | F1: 0.4688\n",
++      "Epoch 23/24\n",
+       "----------\n",
+-      "train Loss: 0.2515 | Acc: 0.9270 | Prec: nan | Recall: 0.0000 | F1: nan\n",
+-      "val Loss: 0.2587 | Acc: 0.9252 | Prec: 0.0000 | Recall: 0.0000 | F1: nan\n",
+-      "Epoch 2/2\n",
++      "train Loss: 0.2082 | Acc: 0.9321 | Prec: 0.6875 | Recall: 0.1290 | F1: 0.2173\n",
++      "val Loss: 0.1988 | Acc: 0.9364 | Prec: 0.6667 | Recall: 0.2564 | F1: 0.3704\n",
++      "Epoch 24/24\n",
+       "----------\n",
+-      "train Loss: 0.2465 | Acc: 0.9268 | Prec: 0.4000 | Recall: 0.0059 | F1: 0.0116\n",
+-      "val Loss: 0.2315 | Acc: 0.9252 | Prec: 0.0000 | Recall: 0.0000 | F1: nan\n",
+-      "Training complete in 8m 44s\n",
+-      "Best val Acc: 0.927103\n"
++      "train Loss: 0.2076 | Acc: 0.9315 | Prec: 0.6567 | Recall: 0.1290 | F1: 0.2157\n",
++      "val Loss: 0.2140 | Acc: 0.9308 | Prec: 0.5385 | Recall: 0.3590 | F1: 0.4308\n",
++      "Training complete in 72m 4s\n",
++      "Best val Acc: 0.940187\n"
+      ]
+     }
+    ],
+@@ -745,7 +833,7 @@
+     "# minute.\n",
+     "#\n",
+     "\n",
+-    "model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=3)\n",
++    "model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=25)\n",
+     "\n",
+     "######################################################################\n",
+     "\n",
